@@ -1,0 +1,26 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: tp-users
+            uri: lb://tp-users
+            predicates:
+              - Path=/api/*/users/**
+          - id: tp-tenders
+            uri: lb://tp-tenders
+            predicates:
+              - Path=/api/*/tenders/**
+          - id: tp-chat
+            uri: lb://tp-chat
+            predicates:
+              - Path=/api/*/chats/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8900/eureka/

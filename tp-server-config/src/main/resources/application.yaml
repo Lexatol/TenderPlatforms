@@ -1,0 +1,19 @@
+server:
+  port: 8910
+
+spring:
+  application:
+    name: tp-config
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8900/eureka/
+    fetch-registry: false
